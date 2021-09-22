@@ -16,8 +16,7 @@ import java.util.UUID;
 public class PetEntity {
 
     @Id
-    @GeneratedValue
-    private UUID id;
+    private String id;
 
     @Column(length = 50, nullable = false)
     private String name;
@@ -27,7 +26,7 @@ public class PetEntity {
 
     public PetEntity(){}
 
-    public PetEntity(UUID id, String name, String race){
+    public PetEntity(String id, String name, String race){
         this.id = id;
         this.name = name;
         this.race = race;
@@ -35,9 +34,9 @@ public class PetEntity {
 
     public static PetEntity toEntity(Pet pet){
         return new PetEntity(
-                UUID.fromString(pet.getId()),
+                pet.getId(),
                 pet.getName().getValue(),
-                pet.getName().getValue());
+                pet.getRace().getValue());
     }
 
     public static Pet toPet(PetEntity entity){

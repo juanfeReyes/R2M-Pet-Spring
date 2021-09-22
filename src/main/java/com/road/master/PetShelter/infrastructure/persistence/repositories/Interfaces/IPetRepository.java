@@ -3,7 +3,5 @@ package com.road.master.PetShelter.infrastructure.persistence.repositories.Inter
 import com.road.master.PetShelter.infrastructure.persistence.Entity.PetEntity;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.UUID;
-
-public interface IPetRepository extends CrudRepository<PetEntity, UUID> {
+public interface IPetRepository extends CrudRepository<PetEntity, String> {
 }

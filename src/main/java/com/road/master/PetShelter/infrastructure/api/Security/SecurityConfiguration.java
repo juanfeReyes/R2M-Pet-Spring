@@ -49,7 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers(
             "/swagger-ui.html",
             "/swagger-ui/**",
-            "/v3/api-docs/**");
+            "/api-docs/**");
   }
 
   @Bean

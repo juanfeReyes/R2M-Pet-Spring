@@ -3,6 +3,8 @@ package com.road.master.PetShelter.infrastructure.api.Pet;
 import com.road.master.PetShelter.application.Pet.CreatePet;
 import com.road.master.PetShelter.domain.Pet;
 import com.road.master.PetShelter.infrastructure.api.Pet.dto.PetDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,6 +18,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("pets")
 @Tag(name = "Pets")
+@SecurityRequirement(name = "basicAuth")
 public class CreatePetController {
 
     private CreatePet createPet;

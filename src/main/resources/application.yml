@@ -9,9 +9,24 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId:  #Only local
+            clientSecret:  #Only local
 
 springdoc:
   swagger-ui:
+    oauth2RedirectUrl: /swagger-ui.html
     path: /swagger-ui.html
+    oauth:
+      clientId: 465e6acff1f35b45a429
+      clientSecret: 130d8239abc2e82bd0c03d69805f2735d9fa4242
+      usePkceWithAuthorizationCodeGrant: true
   api-docs:
     path: /api-docs
+  oAuthFlow:
+    authorizationUrl: "https://github.com/login/oauth/authorize"
+    tokenUrl: "https://github.com/login/oauth/access_token"

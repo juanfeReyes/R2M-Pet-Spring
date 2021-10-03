@@ -24,5 +24,6 @@ services:
       DB_PORT: 3306
       DB_USER: keycloak_user
       DB_PASSWORD: password
+      KEYCLOAK_IMPORT: /tmp/pet-realm.json
     volumes:
-      - ./init-script/mariadb:/tmp
+      - ./init-script/keycloak:/tmp

@@ -21,16 +21,17 @@ import javax.validation.Valid;
 @SecurityRequirement(name = "basicAuth")
 public class CreatePetController {
 
-    private CreatePet createPet;
+  private final CreatePet createPet;
 
-    @Autowired
-    public CreatePetController(CreatePet createPet){
-        this.createPet = createPet;
-    }
+  @Autowired
+  public CreatePetController(CreatePet createPet) {
+    this.createPet = createPet;
+  }
 
-    //TODO: Update requestBody to DTO for controller
-    @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Pet createPet(@Valid @RequestBody PetDTO pet){
-        return createPet.execute(pet.getId(), pet.getName(), pet.getRace());
-    }
+  //TODO: Update requestBody to DTO for controller
+  @Operation(summary = "Create pet", security = {@SecurityRequirement(name = "OAuthScheme")})
+  @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+  public Pet createPet(@Valid @RequestBody PetDTO pet) {
+    return createPet.execute(pet.getId(), pet.getName(), pet.getRace());
+  }
 }

@@ -6,40 +6,39 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.UUID;
 
 @Entity
 @Setter
 @Getter
 public class PetEntity {
 
-    @Id
-    private String id;
+  @Id
+  private String id;
 
-    @Column(length = 50, nullable = false)
-    private String name;
+  @Column(length = 50, nullable = false)
+  private String name;
 
-    @Column(length = 50, nullable = false)
-    private String race;
+  @Column(length = 50, nullable = false)
+  private String race;
 
-    public PetEntity(){}
+  public PetEntity() {
+  }
 
-    public PetEntity(String id, String name, String race){
-        this.id = id;
-        this.name = name;
-        this.race = race;
-    }
+  public PetEntity(String id, String name, String race) {
+    this.id = id;
+    this.name = name;
+    this.race = race;
+  }
 
-    public static PetEntity toEntity(Pet pet){
-        return new PetEntity(
-                pet.getId(),
-                pet.getName().getValue(),
-                pet.getRace().getValue());
-    }
+  public static PetEntity toEntity(Pet pet) {
+    return new PetEntity(
+        pet.getId(),
+        pet.getName().getValue(),
+        pet.getRace().getValue());
+  }
 
-    public static Pet toPet(PetEntity entity){
-        return new Pet(entity.id.toString(), entity.name, entity.race);
-    }
+  public static Pet toPet(PetEntity entity) {
+    return new Pet(entity.id, entity.name, entity.race);
+  }
 }

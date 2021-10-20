@@ -18,7 +18,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http
         .exceptionHandling()
-        //.authenticationEntryPoint(new Http403ForbiddenEntryPoint())
         .and()
         .authorizeRequests()
         .antMatchers("/swagger-ui.html/**", "/swagger-ui/**", "/api-docs/**")

@@ -1,12 +1,15 @@
 package com.road.master.PetShelter.infrastructure.api.Pet;
 
-import ch.qos.logback.core.util.ContentTypeUtil;
 import com.road.master.PetShelter.application.Pet.GetPets;
 import com.road.master.PetShelter.domain.Pet;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jdk.jfr.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,15 +21,18 @@ import java.util.List;
 @Tag(name = "Pets")
 public class GetPetsController {
 
-    private GetPets getPets;
+  private final GetPets getPets;
 
-    @Autowired
-    public GetPetsController(GetPets getPets){
-        this.getPets = getPets;
-    }
+  @Autowired
+  public GetPetsController(GetPets getPets) {
+    this.getPets = getPets;
+  }
 
-    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Pet> getPets(){
-        return getPets.execute();
-    }
+  @Operation(summary = "Get all pets", security = {@SecurityRequirement(name = "OAuthScheme")})
+  @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+  @PreAuthorize("hasRole('READ')")
+  public List<Pet> getPets() {
+    var auth = SecurityContextHolder.getContext().getAuthentication();
+    return getPets.execute();
+  }
 }

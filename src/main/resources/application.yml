@@ -9,6 +9,13 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create
+  data:
+    mongodb:
+      username: root
+      password: password
+      database: shelter
+      host: localhost
+
   security:
     oauth2:
       resourceserver:

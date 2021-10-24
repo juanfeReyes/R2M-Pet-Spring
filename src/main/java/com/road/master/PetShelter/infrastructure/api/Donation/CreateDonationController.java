@@ -24,9 +24,8 @@ public class CreateDonationController {
     this.createDonation = createDonation;
   }
 
-  //TODO: Update requestBody to DTO for controller
   @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-  public void createPet(@Valid @RequestBody Donation donation){
+  public void createDonation(@Valid @RequestBody Donation donation){
     createDonation.execute(donation);
   }
 }

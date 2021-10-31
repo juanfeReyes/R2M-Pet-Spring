@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreateDonation {
 
-  private DonationRepository donationRepository;
+  private final DonationRepository donationRepository;
 
   @Autowired
-  public CreateDonation(DonationRepository donationRepository){
+  public CreateDonation(DonationRepository donationRepository) {
     this.donationRepository = donationRepository;
   }
 
-  public void execute(Donation donation){
+  public void execute(Donation donation) {
     this.donationRepository.save(DonationDocument.toDocument(donation));
   }
 }

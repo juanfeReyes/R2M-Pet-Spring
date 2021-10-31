@@ -9,10 +9,10 @@ import org.apache.commons.lang3.StringUtils;
 @Setter
 public class Name {
 
-    private String value;
+  private String value;
 
-    public Name(String name){
-        if(StringUtils.isBlank(name)) throw new MissingArgumentException("Name");
-        this.value = name;
-    }
+  public Name(String name) {
+    if (StringUtils.isBlank(name)) throw new MissingArgumentException("Name");
+    this.value = name;
+  }
 }

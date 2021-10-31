@@ -39,3 +39,18 @@ services:
       MONGO_INITDB_DATABASE: shelter
     volumes:
       - ./init-script/mongoDB/data:/data/db
+
+  redis:
+    image: redis:6.2.6
+    ports:
+      - 6379:6379
+
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - 7070:8081

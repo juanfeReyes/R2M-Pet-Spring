@@ -15,12 +15,15 @@ spring:
       password: password
       database: shelter
       host: localhost
-
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8180/auth/realms/pets-api-realm
+  redis:
+    host: localhost
+    port: 6379
+
 
 springdoc:
   swagger-ui:

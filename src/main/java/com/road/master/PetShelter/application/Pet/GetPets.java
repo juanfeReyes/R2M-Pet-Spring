@@ -13,18 +13,18 @@ import java.util.stream.StreamSupport;
 @Service
 public class GetPets {
 
-    private IPetRepository petRepository;
+  private final IPetRepository petRepository;
 
-    @Autowired
-    public GetPets(IPetRepository petRepository){
-        this.petRepository = petRepository;
-    }
+  @Autowired
+  public GetPets(IPetRepository petRepository) {
+    this.petRepository = petRepository;
+  }
 
-    public List<Pet> execute(){
-        var pets = StreamSupport.stream(petRepository.findAll().spliterator(), false)
-                .map(pet -> PetEntity.toPet(pet))
-                .collect(Collectors.toList());
+  public List<Pet> execute() {
+    var pets = StreamSupport.stream(petRepository.findAll().spliterator(), false)
+        .map(pet -> PetEntity.toPet(pet))
+        .collect(Collectors.toList());
 
-        return pets ;
-    }
+    return pets;
+  }
 }

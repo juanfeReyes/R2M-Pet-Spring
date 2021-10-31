@@ -1,7 +1,7 @@
-package com.road.master.PetShelter.infrastructure.api.Pet;
+package com.road.master.PetShelter.infrastructure.api.Donation;
 
-import com.road.master.PetShelter.application.Pet.GetPets;
-import com.road.master.PetShelter.domain.Pet;
+import com.road.master.PetShelter.application.Donation.GetDonationByFilter;
+import com.road.master.PetShelter.domain.Donation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -11,27 +11,27 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @RestController
-@RequestMapping("pets")
-@Tag(name = "Pets")
-public class GetPetsController {
+@RequestMapping("donation")
+@Tag(name = "Donation")
+public class GetDonationByFilterController {
 
-  private final GetPets getPets;
+  private final GetDonationByFilter getDonationByFilter;
 
   @Autowired
-  public GetPetsController(GetPets getPets) {
-    this.getPets = getPets;
+  public GetDonationByFilterController(GetDonationByFilter getDonationByFilter) {
+    this.getDonationByFilter = getDonationByFilter;
   }
 
-  @Operation(summary = "Get all pets", security = {@SecurityRequirement(name = "OAuthScheme")})
+  @Operation(summary = "Get Donation by filter", security = {@SecurityRequirement(name = "OAuthScheme")})
   @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
   @PreAuthorize("hasRole('READ')")
-  public List<Pet> getPets() {
+  public Donation getDonation(@RequestParam String id) {
     var auth = SecurityContextHolder.getContext().getAuthentication();
-    return getPets.execute();
+    return getDonationByFilter.execute(id);
   }
 }

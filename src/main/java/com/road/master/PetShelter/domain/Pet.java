@@ -7,15 +7,15 @@ import lombok.Getter;
 @Getter
 public class Pet {
 
-    private String id;
+  private final String id;
 
-    private Name name;
+  private final Name name;
 
-    private Race race;
+  private final Race race;
 
-    public Pet(String id, String name, String race){
-        this.id = id;
-        this.name = new Name(name);
-        this.race = new Race(race);
-    }
+  public Pet(String id, String name, String race) {
+    this.id = id;
+    this.name = new Name(name);
+    this.race = new Race(race);
+  }
 }

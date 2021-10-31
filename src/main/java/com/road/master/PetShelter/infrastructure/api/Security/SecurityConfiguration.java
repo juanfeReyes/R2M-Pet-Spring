@@ -38,7 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/api-docs/**");
   }
 
-  JwtAuthenticationConverter getJwtAuthToken(){
+  JwtAuthenticationConverter getJwtAuthToken() {
     var converter = new JwtAuthenticationConverter();
     var grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
     grantedAuthoritiesConverter.setAuthoritiesClaimName("roles");

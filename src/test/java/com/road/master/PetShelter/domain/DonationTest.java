@@ -17,6 +17,6 @@ public class DonationTest {
         "description",
         Map.of());
 
-    assertThat(donation).isNull();
+    assertThat(donation).isNotNull();
   }
 }

@@ -33,5 +33,6 @@ build/
 .vscode/
 
 **/mongoDB/data/**
+**/elasticsearch/data/**
 **/hsperfdata_jboss
 

@@ -28,53 +28,29 @@ services:
     volumes:
       - ./init-script/keycloak:/tmp
 
-  mongo:
-    image: mongo:5.0.3
-    restart: always
+  zookeeper:
+    image: wurstmeister/zookeeper
     ports:
-      - 27017:27017
+      - 2181:2181
+  kafka:
+    image: wurstmeister/kafka:2.12-2.5.0
+    ports:
+      - 9092:9092
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: shelter
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_SCHEMA_REGISTRY_URL: "schemaregistry:8085"
     volumes:
-      - ./init-script/mongoDB/data:/data/db
+      - ./init-script/kafka:/var/run/docker.sock
 
-  redis:
-    image: redis:6.2.6
-    ports:
-      - 6379:6379
-
-  redis-commander:
-    container_name: redis-commander
-    hostname: redis-commander
-    image: rediscommander/redis-commander:latest
+  schemaregistry:
+    image: confluentinc/cp-schema-registry:5.1.2
     restart: always
+    depends_on:
+      - zookeeper
     environment:
-      - REDIS_HOSTS=local:redis:6379
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: "zookeeper:2181"
+      SCHEMA_REGISTRY_HOST_NAME: schemaregistry
+      SCHEMA_REGISTRY_LISTENERS: "http://0.0.0.0:8085"
     ports:
-      - 7070:8081
-
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
-    container_name: elasticsearch
-    environment:
-      - discovery.type=single-node
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - ./init-script/elasticsearch/data:/usr/share/elasticsearch/data
-    ports:
-      - 9200:9200
-
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.15.1
-    environment:
-      SERVER_NAME: kibana.example.org
-      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
-    ports:
-      - 5601:5601
+      - 8085:8085

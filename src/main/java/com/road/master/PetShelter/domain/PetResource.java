@@ -4,6 +4,9 @@ import schemas.Donation.Resource;
 import schemas.Pet.PetResourceRequest;
 import schemas.Pet.PriorityEnum;
 
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -31,7 +34,7 @@ public class PetResource {
     petResource.setRace(pet.getRace().getValue());
     petResource.setName(pet.getName().getValue());
     petResource.setId(pet.getId());
-    petResource.setCreationDate(new Date().toString());
+    petResource.setCreationDate(ZonedDateTime.now( ZoneOffset.UTC ).format( DateTimeFormatter.ISO_INSTANT ));
     petResource.setResources(resources);
     return petResource;
   }

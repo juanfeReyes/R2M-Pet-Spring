@@ -13,5 +13,7 @@ jobs:
           java-version: '16'
           distribution: 'adopt'
           cache: maven
+      - name: Build
+        run: mvn clean package
       - name: Unit Test
         run: mvn test

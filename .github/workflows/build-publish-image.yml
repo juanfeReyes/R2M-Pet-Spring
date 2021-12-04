@@ -27,7 +27,7 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
-      - name: Build
+      - name: package
         run: mvn clean package
 
       - name: Log in to the Container registry

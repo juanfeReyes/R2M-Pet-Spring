@@ -3,6 +3,7 @@ services:
 
   mariadb:
     image: mariadb
+    container_name: mariadb
     restart: always
     ports:
       - 3306:3306
@@ -13,10 +14,11 @@ services:
 
   keycloak:
     image: jboss/keycloak:15.0.1
+    container_name: keycloak
     depends_on:
       - mariadb
     ports:
-      - 8180:8080
+      - 8180:8180
     environment:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: password
@@ -24,6 +26,7 @@ services:
       DB_PORT: 3306
       DB_USER: keycloak_user
       DB_PASSWORD: password
+      JAVA_OPTS_APPEND: "-Djboss.http.port=8180"
       KEYCLOAK_IMPORT: "/tmp/pet-realm.json -Dkeycloak.profile.feature.upload_scripts=enabled"
     volumes:
       - ./init-script/keycloak:/tmp
@@ -34,6 +37,7 @@ services:
       - 2181:2181
   kafka:
     image: wurstmeister/kafka:2.12-2.5.0
+    container_name: kafka
     ports:
       - 9092:9092
     environment:
@@ -45,6 +49,7 @@ services:
 
   schemaregistry:
     image: confluentinc/cp-schema-registry:5.1.2
+    container_name: schemaregistry
     restart: always
     depends_on:
       - zookeeper

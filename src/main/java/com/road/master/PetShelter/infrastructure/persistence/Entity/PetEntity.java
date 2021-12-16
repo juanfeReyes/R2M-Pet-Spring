@@ -7,20 +7,25 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Setter
 @Getter
+@Table(name = "pet")
 public class PetEntity {
 
   @Id
   private String id;
 
-  @Column(length = 50, nullable = false)
+  @Column
   private String name;
 
-  @Column(length = 50, nullable = false)
+  @Column
   private String race;
+
+  @Column
+  private boolean active;
 
   public PetEntity() {
   }

@@ -1,0 +1,68 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "add_doctor",
+        "author": "shelter",
+        "changes": [
+          {
+            "createTable": {
+              "tableName": "doctor",
+              "columns": [
+                {
+                  "column": {
+                    "name": "id",
+                    "type": "varchar(36)",
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_doctor"
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "medical_appointment_id",
+                    "type": "varchar(36)",
+                    "constraints": {
+                      "nullable": false,
+                      "references": "medical_appointment(id)",
+                      "foreignKeyName": "fk_doctor_medical_appointment"
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "varchar(100)",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "lastname",
+                    "type": "varchar(100)",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "expertise",
+                    "type": "varchar(100)",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "databaseChangeLog": [
+    {
+      "include": {
+        "file": "/changelogs/9122021_add_pet.json"
+      }
+    },
+    {
+      "include": {
+        "file": "/changelogs/14122021_add_medical_appointment.json"
+      }
+    },
+    {
+      "include": {
+        "file": "/changelogs/14122021_add_treatment.json"
+      }
+    },
+    {
+      "include": {
+        "file": "/changelogs/15122021_add_doctor.json"
+      }
+    },
+    {
+      "include": {
+        "file": "/changelogs/15122021_add_adopter.json"
+      }
+    },
+    {
+      "include": {
+        "file": "/changelogs/15122021_add_adoption.json"
+      }
+    },
+    {
+      "include": {
+        "file": "/changelogs/15122021_add_appointment_type.json"
+      }
+    }
+  ]
+}

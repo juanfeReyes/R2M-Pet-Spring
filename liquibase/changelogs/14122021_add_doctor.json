@@ -22,17 +22,6 @@
                 },
                 {
                   "column": {
-                    "name": "medical_appointment_id",
-                    "type": "varchar(36)",
-                    "constraints": {
-                      "nullable": false,
-                      "references": "medical_appointment(id)",
-                      "foreignKeyName": "fk_doctor_medical_appointment"
-                    }
-                  }
-                },
-                {
-                  "column": {
                     "name": "name",
                     "type": "varchar(100)",
                     "constraints": {

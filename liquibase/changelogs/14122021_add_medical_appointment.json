@@ -33,6 +33,17 @@
                 },
                 {
                   "column": {
+                    "name": "doctor_id",
+                    "type": "varchar(36)",
+                    "constraints": {
+                      "nullable": false,
+                      "references": "doctor(id)",
+                      "foreignKeyName": "fk_medical_appointment_doctor"
+                    }
+                  }
+                },
+                {
+                  "column": {
                     "name": "schedule_date",
                     "type": "datetime",
                     "constraints": {

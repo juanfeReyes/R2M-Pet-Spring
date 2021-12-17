@@ -1,4 +1,4 @@
-package com.road.master.PetShelter.infrastructure.messaging;
+package com.road.master.PetShelter.infrastructure.messaging.pet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.function.StreamBridge;

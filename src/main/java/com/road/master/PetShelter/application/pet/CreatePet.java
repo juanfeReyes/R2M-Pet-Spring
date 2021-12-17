@@ -1,11 +1,11 @@
-package com.road.master.PetShelter.application.Pet;
+package com.road.master.PetShelter.application.pet;
 
-import com.road.master.PetShelter.domain.Pet;
-import com.road.master.PetShelter.domain.PetResource;
+import com.road.master.PetShelter.domain.pet.Pet;
+import com.road.master.PetShelter.domain.pet.PetResource;
 import com.road.master.PetShelter.domain.exceptions.ConflictException;
-import com.road.master.PetShelter.infrastructure.messaging.PetResourceSender;
-import com.road.master.PetShelter.infrastructure.persistence.Entity.PetEntity;
-import com.road.master.PetShelter.infrastructure.persistence.repositories.Interfaces.IPetRepository;
+import com.road.master.PetShelter.infrastructure.messaging.pet.PetResourceSender;
+import com.road.master.PetShelter.infrastructure.persistence.pet.PetEntity;
+import com.road.master.PetShelter.infrastructure.persistence.pet.IPetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

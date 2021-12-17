@@ -1,4 +1,4 @@
-package com.road.master.PetShelter.infrastructure.api.Pet.dto;
+package com.road.master.PetShelter.infrastructure.api.pet.dto;
 
 import lombok.Getter;
 import lombok.Setter;

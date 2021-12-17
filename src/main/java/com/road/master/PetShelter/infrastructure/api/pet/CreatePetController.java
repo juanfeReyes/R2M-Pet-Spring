@@ -1,8 +1,8 @@
-package com.road.master.PetShelter.infrastructure.api.Pet;
+package com.road.master.PetShelter.infrastructure.api.pet;
 
-import com.road.master.PetShelter.application.Pet.CreatePet;
-import com.road.master.PetShelter.domain.Pet;
-import com.road.master.PetShelter.infrastructure.api.Pet.dto.PetDTO;
+import com.road.master.PetShelter.application.pet.CreatePet;
+import com.road.master.PetShelter.domain.pet.Pet;
+import com.road.master.PetShelter.infrastructure.api.pet.dto.PetDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;

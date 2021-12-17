@@ -1,6 +1,6 @@
-package com.road.master.PetShelter.infrastructure.persistence.Entity;
+package com.road.master.PetShelter.infrastructure.persistence.pet;
 
-import com.road.master.PetShelter.domain.Pet;
+import com.road.master.PetShelter.domain.pet.Pet;
 import lombok.Getter;
 import lombok.Setter;
 

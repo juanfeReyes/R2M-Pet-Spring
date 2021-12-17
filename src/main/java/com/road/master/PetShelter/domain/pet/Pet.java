@@ -1,4 +1,4 @@
-package com.road.master.PetShelter.domain;
+package com.road.master.PetShelter.domain.pet;
 
 import com.road.master.PetShelter.domain.valueObjects.Name;
 import com.road.master.PetShelter.domain.valueObjects.Race;

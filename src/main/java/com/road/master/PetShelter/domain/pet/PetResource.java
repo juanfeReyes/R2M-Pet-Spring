@@ -1,5 +1,6 @@
-package com.road.master.PetShelter.domain;
+package com.road.master.PetShelter.domain.pet;
 
+import com.road.master.PetShelter.domain.pet.Pet;
 import schemas.Donation.Resource;
 import schemas.Pet.PetResourceRequest;
 import schemas.Pet.PriorityEnum;
@@ -7,7 +8,6 @@ import schemas.Pet.PriorityEnum;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 

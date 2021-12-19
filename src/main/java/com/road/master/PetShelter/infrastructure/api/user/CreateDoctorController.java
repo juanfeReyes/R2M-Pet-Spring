@@ -1,8 +1,7 @@
-package com.road.master.PetShelter.infrastructure.api.pet;
+package com.road.master.PetShelter.infrastructure.api.user;
 
-import com.road.master.PetShelter.application.pet.CreatePet;
-import com.road.master.PetShelter.domain.pet.Pet;
-import com.road.master.PetShelter.infrastructure.api.pet.dto.PetDTO;
+import com.road.master.PetShelter.application.user.CreateDoctor;
+import com.road.master.PetShelter.domain.user.Doctor;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,22 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("pets")
-@Tag(name = "Pets")
+@RequestMapping("doctor")
+@Tag(name = "User")
 @SecurityRequirement(name = "basicAuth")
-public class CreatePetController {
+public class CreateDoctorController {
 
-  private final CreatePet createPet;
+  private CreateDoctor createDoctor;
 
   @Autowired
-  public CreatePetController(CreatePet createPet) {
-    this.createPet = createPet;
+  public CreateDoctorController(CreateDoctor createDoctor){
+    this.createDoctor = createDoctor;
   }
 
-  @Operation(summary = "Create pet", security = {@SecurityRequirement(name = "OAuthScheme")})
+  @Operation(summary = "Create Doctor", security = {@SecurityRequirement(name = "OAuthScheme")})
   @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
   @PreAuthorize("hasRole('WRITE')")
-  public Pet createPet(@Valid @RequestBody PetDTO pet) {
-    return createPet.execute(pet.getId(), pet.getName(), pet.getRace());
+  public Doctor createDoctor(@Valid @RequestBody Doctor doctor){
+    return createDoctor.execute(doctor);
   }
+
 }

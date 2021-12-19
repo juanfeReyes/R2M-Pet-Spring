@@ -1,4 +1,4 @@
-package com.road.master.PetShelter.domain.doctor;
+package com.road.master.PetShelter.domain.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

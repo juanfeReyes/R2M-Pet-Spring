@@ -34,7 +34,7 @@ public class PetResource {
     petResource.setRace(pet.getRace().getValue());
     petResource.setName(pet.getName().getValue());
     petResource.setId(pet.getId());
-    petResource.setCreationDate(ZonedDateTime.now( ZoneOffset.UTC ).format( DateTimeFormatter.ISO_INSTANT ));
+    petResource.setCreationDate(ZonedDateTime.now(ZoneOffset.UTC).format(DateTimeFormatter.ISO_INSTANT));
     petResource.setResources(resources);
     return petResource;
   }

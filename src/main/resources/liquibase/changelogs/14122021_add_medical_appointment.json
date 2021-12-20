@@ -2,12 +2,12 @@
   "databaseChangeLog": [
     {
       "changeSet": {
-        "id": "add_doctor",
+        "id": "add_medical_appointment",
         "author": "shelter",
         "changes": [
           {
             "createTable": {
-              "tableName": "doctor",
+              "tableName": "medical_appointment",
               "columns": [
                 {
                   "column": {
@@ -16,25 +16,36 @@
                     "constraints": {
                       "nullable": false,
                       "primaryKey": true,
-                      "primaryKeyName": "pk_doctor"
+                      "primaryKeyName": "pk_medical_appointment"
                     }
                   }
                 },
                 {
                   "column": {
-                    "name": "medical_appointment_id",
+                    "name": "pet_id",
                     "type": "varchar(36)",
                     "constraints": {
                       "nullable": false,
-                      "references": "medical_appointment(id)",
-                      "foreignKeyName": "fk_doctor_medical_appointment"
+                      "references": "pet(id)",
+                      "foreignKeyName": "fk_medical_appointment_pet"
                     }
                   }
                 },
                 {
                   "column": {
-                    "name": "name",
-                    "type": "varchar(100)",
+                    "name": "doctor_id",
+                    "type": "varchar(36)",
+                    "constraints": {
+                      "nullable": false,
+                      "references": "doctor(id)",
+                      "foreignKeyName": "fk_medical_appointment_doctor"
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "schedule_date",
+                    "type": "datetime",
                     "constraints": {
                       "nullable": false
                     }
@@ -42,19 +53,19 @@
                 },
                 {
                   "column": {
-                    "name": "lastname",
-                    "type": "varchar(100)",
+                    "name": "atention_date",
+                    "type": "datetime",
                     "constraints": {
-                      "nullable": false
+                      "nullable": true
                     }
                   }
                 },
                 {
                   "column": {
-                    "name": "expertise",
-                    "type": "varchar(100)",
+                    "name": "description",
+                    "type": "varchar(500)",
                     "constraints": {
-                      "nullable": false
+                      "nullable": true
                     }
                   }
                 }

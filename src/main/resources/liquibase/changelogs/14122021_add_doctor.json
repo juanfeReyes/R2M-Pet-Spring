@@ -2,12 +2,12 @@
   "databaseChangeLog": [
     {
       "changeSet": {
-        "id": "add_medical_appointment",
+        "id": "add_doctor",
         "author": "shelter",
         "changes": [
           {
             "createTable": {
-              "tableName": "medical_appointment",
+              "tableName": "doctor",
               "columns": [
                 {
                   "column": {
@@ -16,25 +16,14 @@
                     "constraints": {
                       "nullable": false,
                       "primaryKey": true,
-                      "primaryKeyName": "pk_medical_appointment"
+                      "primaryKeyName": "pk_doctor"
                     }
                   }
                 },
                 {
                   "column": {
-                    "name": "pet_id",
-                    "type": "varchar(36)",
-                    "constraints": {
-                      "nullable": false,
-                      "references": "pet(id)",
-                      "foreignKeyName": "fk_medical_appointment_pet"
-                    }
-                  }
-                },
-                {
-                  "column": {
-                    "name": "schedule_date",
-                    "type": "datetime",
+                    "name": "name",
+                    "type": "varchar(100)",
                     "constraints": {
                       "nullable": false
                     }
@@ -42,19 +31,19 @@
                 },
                 {
                   "column": {
-                    "name": "atention_date",
-                    "type": "datetime",
+                    "name": "lastname",
+                    "type": "varchar(100)",
                     "constraints": {
-                      "nullable": true
+                      "nullable": false
                     }
                   }
                 },
                 {
                   "column": {
-                    "name": "description",
-                    "type": "varchar(500)",
+                    "name": "expertise",
+                    "type": "varchar(100)",
                     "constraints": {
-                      "nullable": true
+                      "nullable": false
                     }
                   }
                 }

@@ -21,17 +21,17 @@ import javax.validation.Valid;
 @SecurityRequirement(name = "basicAuth")
 public class CreateDoctorController {
 
-  private CreateDoctor createDoctor;
+  private final CreateDoctor createDoctor;
 
   @Autowired
-  public CreateDoctorController(CreateDoctor createDoctor){
+  public CreateDoctorController(CreateDoctor createDoctor) {
     this.createDoctor = createDoctor;
   }
 
   @Operation(summary = "Create Doctor", security = {@SecurityRequirement(name = "OAuthScheme")})
   @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
   @PreAuthorize("hasRole('WRITE')")
-  public Doctor createDoctor(@Valid @RequestBody Doctor doctor){
+  public Doctor createDoctor(@Valid @RequestBody Doctor doctor) {
     return createDoctor.execute(doctor);
   }
 

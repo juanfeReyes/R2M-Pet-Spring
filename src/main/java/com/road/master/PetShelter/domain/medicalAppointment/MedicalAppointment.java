@@ -24,6 +24,4 @@ public class MedicalAppointment {
   private Doctor doctor;
 
   private Pet pet;
-
-  //TODO how to add reference to list of
 }

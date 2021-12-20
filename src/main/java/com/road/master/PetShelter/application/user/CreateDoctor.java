@@ -13,14 +13,14 @@ public class CreateDoctor {
   private final IDoctorRepository doctorRepository;
 
   @Autowired
-  public CreateDoctor(IDoctorRepository doctorRepository){
+  public CreateDoctor(IDoctorRepository doctorRepository) {
     this.doctorRepository = doctorRepository;
   }
 
-  public Doctor execute(Doctor doctor){
+  public Doctor execute(Doctor doctor) {
     var savedDoctor = doctorRepository.findById(doctor.getId());
-    if(savedDoctor.isPresent()){
-      throw new ConflictException("Doctor already exists with id:"+ doctor.getId());
+    if (savedDoctor.isPresent()) {
+      throw new ConflictException("Doctor already exists with id: " + doctor.getId());
     }
 
     doctorRepository.save(DoctorEntity.build(doctor));

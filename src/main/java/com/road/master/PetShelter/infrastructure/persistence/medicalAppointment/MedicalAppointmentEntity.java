@@ -39,7 +39,7 @@ public class MedicalAppointmentEntity {
   )
   private DoctorEntity doctor;
 
-  public static MedicalAppointmentEntity build(MedicalAppointment medicalAppointment){
+  public static MedicalAppointmentEntity build(MedicalAppointment medicalAppointment) {
     return new MedicalAppointmentEntity(
         medicalAppointment.getId(),
         medicalAppointment.getScheduleDate(),
@@ -49,7 +49,7 @@ public class MedicalAppointmentEntity {
         DoctorEntity.build(medicalAppointment.getDoctor()));
   }
 
-  public MedicalAppointment toDomain(){
+  public MedicalAppointment toDomain() {
     return new MedicalAppointment(id, scheduleDate, atentionDate, description,
         doctor.toDomain(), PetEntity.toPet(pet));
   }

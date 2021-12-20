@@ -23,17 +23,17 @@ import javax.validation.Valid;
 @SecurityRequirement(name = "basicAuth")
 public class CreateMedicalAppointmentController {
 
-  private CreateMedicalAppointment createMedicalAppointment;
+  private final CreateMedicalAppointment createMedicalAppointment;
 
   @Autowired
-  public CreateMedicalAppointmentController(CreateMedicalAppointment createMedicalAppointment){
+  public CreateMedicalAppointmentController(CreateMedicalAppointment createMedicalAppointment) {
     this.createMedicalAppointment = createMedicalAppointment;
   }
 
   @Operation(summary = "Create medical appointment", security = {@SecurityRequirement(name = "OAuthScheme")})
   @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
   @PreAuthorize("hasRole('WRITE')")
-  public MedicalAppointment createMedicalAppointment(@Valid @RequestBody MedicalAppointmentRequest medicalAppointmentRequest){
+  public MedicalAppointment createMedicalAppointment(@Valid @RequestBody MedicalAppointmentRequest medicalAppointmentRequest) {
     return createMedicalAppointment.execute(medicalAppointmentRequest);
   }
 }

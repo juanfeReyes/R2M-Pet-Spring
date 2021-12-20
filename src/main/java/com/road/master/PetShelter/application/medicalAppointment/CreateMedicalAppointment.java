@@ -14,46 +14,44 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreateMedicalAppointment {
 
-  private IMedicalAppointmentRepository medicalAppointmentRepository;
+  private final IMedicalAppointmentRepository medicalAppointmentRepository;
 
-  private IPetRepository petRepository;
+  private final IPetRepository petRepository;
 
-  private IDoctorRepository doctorRepository;
+  private final IDoctorRepository doctorRepository;
 
   @Autowired
   public CreateMedicalAppointment(IMedicalAppointmentRepository medicalAppointmentRepository,
                                   IDoctorRepository doctorRepository,
-                                  IPetRepository petRepository){
+                                  IPetRepository petRepository) {
     this.medicalAppointmentRepository = medicalAppointmentRepository;
     this.petRepository = petRepository;
     this.doctorRepository = doctorRepository;
   }
 
-  public MedicalAppointment execute(MedicalAppointmentRequest request){
-    //Verify pet exists and returned
+  public MedicalAppointment execute(MedicalAppointmentRequest request) {
     var pet = petRepository.findById(request.getPetId());
-    if(pet.isEmpty()){
+    if (pet.isEmpty()) {
       throw new NotFoundException("pet not found with id: " + request.getPetId());
     }
-    //Verify doctor exists and return
+
     var doctor = doctorRepository.findById(request.getDoctorId());
-    if(doctor.isEmpty()){
+    if (doctor.isEmpty()) {
       throw new NotFoundException("doctor not found with id: " + request.getDoctorId());
     }
 
     var savedAppointment = medicalAppointmentRepository.findById(request.getId());
-    if(savedAppointment.isPresent()){
+    if (savedAppointment.isPresent()) {
       throw new ConflictException("Medical appointment already exists");
     }
-    // build medical appointment
-    var entity = new MedicalAppointmentEntity(request.getId(),
-        request.getScheduleDate(),
-        request.getAtentionDate(),
-        request.getDescription(),
-        pet.get(),
-        doctor.get());
 
-    var medicalAppointment = medicalAppointmentRepository.save(entity);
+    var medicalAppointment = medicalAppointmentRepository.save(
+        new MedicalAppointmentEntity(request.getId(),
+            request.getScheduleDate(),
+            request.getAtentionDate(),
+            request.getDescription(),
+            pet.get(),
+            doctor.get()));
 
     return medicalAppointment.toDomain();
   }

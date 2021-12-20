@@ -34,5 +34,4 @@ public class CreateDoctorController {
   public Doctor createDoctor(@Valid @RequestBody Doctor doctor) {
     return createDoctor.execute(doctor);
   }
-
 }

@@ -1,17 +1,19 @@
-package com.road.master.PetShelter.domain.medicalAppointment;
+package com.road.master.PetShelter.infrastructure.api.medicalAppointment.dto;
 
 import com.road.master.PetShelter.domain.pet.Pet;
 import com.road.master.PetShelter.domain.user.Doctor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
-public class MedicalAppointment {
+public class MedicalAppointmentRequest {
 
   private String id;
 
@@ -21,9 +23,7 @@ public class MedicalAppointment {
 
   private String description;
 
-  private Doctor doctor;
+  private String doctorId;
 
-  private Pet pet;
-
-  //TODO how to add reference to list of
+  private String petId;
 }

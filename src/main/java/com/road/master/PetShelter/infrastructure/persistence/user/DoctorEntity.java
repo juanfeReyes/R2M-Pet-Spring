@@ -30,4 +30,8 @@ public class DoctorEntity {
   public static DoctorEntity build(Doctor doctor){
     return new DoctorEntity(doctor.getId(), doctor.getName(), doctor.getLastname(), doctor.getExpertise());
   }
+
+  public Doctor toDomain(){
+    return new Doctor(id, name, lastname, expertise);
+  }
 }

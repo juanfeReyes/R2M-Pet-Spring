@@ -23,7 +23,6 @@ public class TreatmentRequest {
   private List<TreatmentItem> treatments;
 
   public static List<Treatment> treatmentItemsToDomain(List<TreatmentItem> treatmentItems, Treatment treatmentGroup){
-    //Do treatment recusively
     if(treatmentItems.isEmpty()){
       return Collections.emptyList();
     }

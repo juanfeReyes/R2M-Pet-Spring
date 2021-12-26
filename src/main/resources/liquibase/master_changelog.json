@@ -34,6 +34,11 @@
       "include": {
         "file": "/liquibase/changelogs/15122021_add_appointment_type.json"
       }
+    },
+    {
+      "include": {
+        "file": "/liquibase/data/25122021_initial_data.json"
+      }
     }
   ]
 }

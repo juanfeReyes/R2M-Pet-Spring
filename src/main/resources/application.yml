@@ -11,6 +11,7 @@ spring:
   liquibase:
     change-log: classpath:liquibase/master_changelog.json
     enabled: true
+    drop-first: true
     user: root
     password: password
   security:

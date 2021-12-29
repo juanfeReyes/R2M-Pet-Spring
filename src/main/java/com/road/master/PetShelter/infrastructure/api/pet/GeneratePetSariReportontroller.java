@@ -1,7 +1,7 @@
 package com.road.master.PetShelter.infrastructure.api.pet;
 
 
-import com.road.master.PetShelter.application.medicalAppointment.GenerateSariReportTreatment;
+import com.road.master.PetShelter.application.pet.GeneratePetSariReport;
 import com.road.master.PetShelter.domain.pet.Pet;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -20,13 +20,13 @@ import java.util.List;
 @RequestMapping("pets")
 @Tag(name = "Pets")
 @SecurityRequirement(name = "basicAuth")
-public class GenerateSariReportTreatmentController {
+public class GeneratePetSariReportontroller {
 
-  private final GenerateSariReportTreatment generateSariReportTreatment;
+  private final GeneratePetSariReport generatePetSariReport;
 
   @Autowired
-  public GenerateSariReportTreatmentController(GenerateSariReportTreatment generateSariReportTreatment) {
-    this.generateSariReportTreatment = generateSariReportTreatment;
+  public GeneratePetSariReportontroller(GeneratePetSariReport generatePetSariReport) {
+    this.generatePetSariReport = generatePetSariReport;
   }
 
   @Operation(summary = "Generte sari report for pets", security = {@SecurityRequirement(name = "OAuthScheme")})
@@ -36,6 +36,6 @@ public class GenerateSariReportTreatmentController {
                                       @RequestParam String doctorExpertise,
                                       @RequestParam String adopterAddress,
                                       @RequestParam String adopterName) {
-    return generateSariReportTreatment.execute(petRace, doctorExpertise, adopterAddress, adopterName);
+    return generatePetSariReport.execute(petRace, doctorExpertise, adopterAddress, adopterName);
   }
 }

@@ -1,4 +1,4 @@
-package com.road.master.PetShelter.application.medicalAppointment;
+package com.road.master.PetShelter.application.pet;
 
 import com.road.master.PetShelter.domain.pet.Pet;
 import com.road.master.PetShelter.infrastructure.persistence.pet.IPetRepository;
@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class GenerateSariReportTreatment {
+public class GeneratePetSariReport {
 
   private final IPetRepository petRepository;
 
   @Autowired
-  public GenerateSariReportTreatment(IPetRepository petRepository) {
+  public GeneratePetSariReport(IPetRepository petRepository) {
     this.petRepository = petRepository;
   }
 

@@ -1,6 +1,5 @@
 package com.road.master.PetShelter.domain.pet;
 
-import com.road.master.PetShelter.domain.pet.Pet;
 import schemas.Donation.Resource;
 import schemas.Pet.PetResourceRequest;
 import schemas.Pet.PriorityEnum;

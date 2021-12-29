@@ -39,6 +39,11 @@
       "include": {
         "file": "/liquibase/data/25122021_initial_data.json"
       }
+    },
+    {
+      "include": {
+        "file": "/liquibase/changelogs/27122021_sari_report_store_procedure.json"
+      }
     }
   ]
 }

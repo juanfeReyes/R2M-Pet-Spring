@@ -1,7 +1,6 @@
 package com.road.master.PetShelter.infrastructure.api.medicalAppointment;
 
 import com.road.master.PetShelter.application.medicalAppointment.CreateTreatment;
-import com.road.master.PetShelter.domain.medicalAppointment.Treatment;
 import com.road.master.PetShelter.infrastructure.api.medicalAppointment.dto.TreatmentRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -24,17 +23,17 @@ import java.util.stream.Collectors;
 @SecurityRequirement(name = "basicAuth")
 public class CreateTreatmentController {
 
-  private CreateTreatment createTreatment;
+  private final CreateTreatment createTreatment;
 
   @Autowired
-  public CreateTreatmentController(CreateTreatment createTreatment){
+  public CreateTreatmentController(CreateTreatment createTreatment) {
     this.createTreatment = createTreatment;
   }
 
   @Operation(summary = "Create treatment", security = {@SecurityRequirement(name = "OAuthScheme")})
   @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
   @PreAuthorize("hasRole('WRITE')")
-  public List<String> createTreatment(@Valid @RequestBody TreatmentRequest treatmentRequest){
+  public List<String> createTreatment(@Valid @RequestBody TreatmentRequest treatmentRequest) {
     var treatments = TreatmentRequest.treatmentItemsToDomain(treatmentRequest.getTreatments(), null);
     var createdTreatments = createTreatment.execute(treatmentRequest.getMedicalAppointmentId(), treatments);
     return createdTreatments.stream().map(treatment -> treatment.getId()).collect(Collectors.toList());

@@ -14,13 +14,13 @@ import java.util.stream.Collectors;
 @Service
 public class CreateTreatment {
 
-  private ITreatmentRepository treatmentRepository;
+  private final ITreatmentRepository treatmentRepository;
 
-  private IMedicalAppointmentRepository medicalAppointmentRepository;
+  private final IMedicalAppointmentRepository medicalAppointmentRepository;
 
   @Autowired
   public CreateTreatment(ITreatmentRepository treatmentRepository,
-                         IMedicalAppointmentRepository medicalAppointmentRepository){
+                         IMedicalAppointmentRepository medicalAppointmentRepository) {
     this.treatmentRepository = treatmentRepository;
     this.medicalAppointmentRepository = medicalAppointmentRepository;
   }

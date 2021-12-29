@@ -29,3 +29,11 @@ run the following command inside docker container
 -Dkeycloak.migration.usersExportStrategy=REALM_FILE \
 -Dkeycloak.migration.file=/tmp/pet-realm.json
 ```
+
+
+
+Quiero ver las 5 primeras mascotas  sin repetir razas y que ninguna de esas mascotas sea de tipo perro 
+que ya se les asigno una cita médica con un doctor especialista y que a su vez no tengan ningún tratamiento
+asignado aún. Y a su vez que todos esos animales ya tengan  un dueño que viva en la misma calle donde se
+encuentra la clínica (en calle 34 que se yo)
+Que wl nombre del dueño empiece por A

@@ -1,6 +1,5 @@
 package com.road.master.PetShelter.infrastructure.persistence.medicalAppointment;
 
-import com.road.master.PetShelter.domain.medicalAppointment.MedicalAppointment;
 import com.road.master.PetShelter.domain.medicalAppointment.Treatment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +14,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
+@Getter
 @Table(name = "treatment")
 public class TreatmentEntity {
 
@@ -38,15 +38,15 @@ public class TreatmentEntity {
 
   @ManyToOne
   @JoinColumn(name = "treatment_group",
-    foreignKey = @ForeignKey(name = "fk_treatment_group"))
+      foreignKey = @ForeignKey(name = "fk_treatment_group"))
   private TreatmentEntity treatmentGroup;
 
   @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
   private List<TreatmentEntity> treatments;
 
-  public static TreatmentEntity toEntity(Treatment treatment, TreatmentEntity treatmentGroupEntity){
-    var medicalAppointmentEntity = treatment.getMedicalAppointment() != null ? MedicalAppointmentEntity.build(treatment.getMedicalAppointment()): null;
-    var entity =  new TreatmentEntity(treatment.getId(),
+  public static TreatmentEntity toEntity(Treatment treatment, TreatmentEntity treatmentGroupEntity) {
+    var medicalAppointmentEntity = treatment.getMedicalAppointment() != null ? MedicalAppointmentEntity.build(treatment.getMedicalAppointment()) : null;
+    var entity = new TreatmentEntity(treatment.getId(),
         treatment.getDosis(),
         treatment.getUnit(),
         treatment.getDescription(),
@@ -58,5 +58,20 @@ public class TreatmentEntity {
         .collect(Collectors.toList());
     entity.setTreatments(treatmentEntities);
     return entity;
+  }
+
+  public static Treatment toDomain(TreatmentEntity treatmentEntity, Treatment treatmentGroup) {
+
+    var treatment = new Treatment(treatmentEntity.getId(),
+        treatmentEntity.getDosis(),
+        treatmentEntity.getUnit(),
+        treatmentEntity.getDescription(),
+        treatmentEntity.getMedicalAppointment().toDomain(),
+        treatmentGroup,
+        null);
+    var treatments = treatmentEntity.getTreatments().stream()
+        .map(t -> TreatmentEntity.toDomain(t, treatment)).collect(Collectors.toList());
+    treatment.setTreatments(treatments);
+    return treatment;
   }
 }

@@ -2,7 +2,6 @@ package com.road.master.PetShelter.infrastructure.api.medicalAppointment;
 
 import com.road.master.PetShelter.application.medicalAppointment.CreateMedicalAppointment;
 import com.road.master.PetShelter.domain.medicalAppointment.MedicalAppointment;
-import com.road.master.PetShelter.domain.user.Doctor;
 import com.road.master.PetShelter.infrastructure.api.medicalAppointment.dto.MedicalAppointmentRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;

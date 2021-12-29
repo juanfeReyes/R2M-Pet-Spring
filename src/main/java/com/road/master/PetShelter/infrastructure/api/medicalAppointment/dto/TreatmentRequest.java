@@ -22,22 +22,22 @@ public class TreatmentRequest {
   @JsonProperty(value = "treatment_list")
   private List<TreatmentItem> treatments;
 
-  public static List<Treatment> treatmentItemsToDomain(List<TreatmentItem> treatmentItems, Treatment treatmentGroup){
-    if(treatmentItems.isEmpty()){
+  public static List<Treatment> treatmentItemsToDomain(List<TreatmentItem> treatmentItems, Treatment treatmentGroup) {
+    if (treatmentItems.isEmpty()) {
       return Collections.emptyList();
     }
     return treatmentItems.stream().map(treatmentItem -> {
-      var t = new Treatment(
-          treatmentItem.getId() != null ? treatmentItem.getId() : UUID.randomUUID().toString(),
-          treatmentItem.getDosis(),
-          treatmentItem.getUnit(),
-          treatmentItem.getDescription(),
-          null,
-          treatmentGroup,
-          null);
-      t.setTreatments(treatmentItemsToDomain(treatmentItem.getTreatments(), t));
-      return t;
-    })
+          var t = new Treatment(
+              treatmentItem.getId() != null ? treatmentItem.getId() : UUID.randomUUID().toString(),
+              treatmentItem.getDosis(),
+              treatmentItem.getUnit(),
+              treatmentItem.getDescription(),
+              null,
+              treatmentGroup,
+              null);
+          t.setTreatments(treatmentItemsToDomain(treatmentItem.getTreatments(), t));
+          return t;
+        })
         .collect(Collectors.toList());
   }
 }

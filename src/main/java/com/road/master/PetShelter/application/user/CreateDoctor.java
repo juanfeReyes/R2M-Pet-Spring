@@ -1,7 +1,7 @@
 package com.road.master.PetShelter.application.user;
 
-import com.road.master.PetShelter.domain.user.Doctor;
 import com.road.master.PetShelter.domain.exceptions.ConflictException;
+import com.road.master.PetShelter.domain.user.Doctor;
 import com.road.master.PetShelter.infrastructure.persistence.user.DoctorEntity;
 import com.road.master.PetShelter.infrastructure.persistence.user.IDoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -21,7 +21,7 @@ public class Treatment {
 
   private MedicalAppointment medicalAppointment;
 
-  private Treatment treatment;
+  private Treatment treatmentGroup;
 
   private List<Treatment> treatments;
 

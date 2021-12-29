@@ -1,4 +1,4 @@
-package com.road.master.PetShelter.application.pet;
+package com.road.master.PetShelter.application.medicalAppointment;
 
 import com.road.master.PetShelter.domain.pet.Pet;
 import com.road.master.PetShelter.infrastructure.persistence.pet.IPetRepository;
@@ -8,23 +8,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
-public class GetPets {
+public class GenerateSariReportTreatment {
 
   private final IPetRepository petRepository;
 
   @Autowired
-  public GetPets(IPetRepository petRepository) {
+  public GenerateSariReportTreatment(IPetRepository petRepository) {
     this.petRepository = petRepository;
   }
 
-  public List<Pet> execute() {
-    var pets = StreamSupport.stream(petRepository.findAll().spliterator(), false)
-        .map(pet -> PetEntity.toPet(pet))
-        .collect(Collectors.toList());
+  public List<Pet> execute(String petRace, String doctorExpertise, String adopterAddress, String adopterName) {
 
-    return pets;
+    var entities = petRepository.sariReport(petRace, doctorExpertise, adopterAddress, adopterName);
+    return entities.stream()
+        .map(PetEntity::toPet)
+        .collect(Collectors.toList());
   }
 }

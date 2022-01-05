@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("treatment")
-@Tag(name = "Medical appoitnment")
+@Tag(name = "Medical appointment")
 @SecurityRequirement(name = "basicAuth")
 public class CreateTreatmentController {
 

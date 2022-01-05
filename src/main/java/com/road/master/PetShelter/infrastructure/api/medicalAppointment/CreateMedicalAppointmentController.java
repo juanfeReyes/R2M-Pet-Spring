@@ -18,7 +18,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("medical-appointment")
-@Tag(name = "Medical appoitnment")
+@Tag(name = "Medical appointment")
 @SecurityRequirement(name = "basicAuth")
 public class CreateMedicalAppointmentController {
 

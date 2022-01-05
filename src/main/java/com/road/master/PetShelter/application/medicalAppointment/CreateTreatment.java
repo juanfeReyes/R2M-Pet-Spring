@@ -3,7 +3,7 @@ package com.road.master.PetShelter.application.medicalAppointment;
 import com.road.master.PetShelter.domain.exceptions.NotFoundException;
 import com.road.master.PetShelter.domain.medicalAppointment.Treatment;
 import com.road.master.PetShelter.infrastructure.persistence.medicalAppointment.IMedicalAppointmentRepository;
-import com.road.master.PetShelter.infrastructure.persistence.medicalAppointment.ITreatmentRepository;
+import com.road.master.PetShelter.infrastructure.persistence.medicalAppointment.TreatmentRepository;
 import com.road.master.PetShelter.infrastructure.persistence.medicalAppointment.TreatmentEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 @Service
 public class CreateTreatment {
 
-  private final ITreatmentRepository treatmentRepository;
+  private final TreatmentRepository treatmentRepository;
 
   private final IMedicalAppointmentRepository medicalAppointmentRepository;
 
   @Autowired
-  public CreateTreatment(ITreatmentRepository treatmentRepository,
+  public CreateTreatment(TreatmentRepository treatmentRepository,
                          IMedicalAppointmentRepository medicalAppointmentRepository) {
     this.treatmentRepository = treatmentRepository;
     this.medicalAppointmentRepository = medicalAppointmentRepository;

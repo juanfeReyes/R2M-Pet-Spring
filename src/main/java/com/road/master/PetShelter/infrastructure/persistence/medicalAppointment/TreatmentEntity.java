@@ -61,16 +61,19 @@ public class TreatmentEntity {
   }
 
   public static Treatment toDomain(TreatmentEntity treatmentEntity, Treatment treatmentGroup) {
+    var medicalAppointment = treatmentEntity.getMedicalAppointment() != null ?
+        treatmentEntity.getMedicalAppointment().toDomain() : null;
 
     var treatment = new Treatment(treatmentEntity.getId(),
         treatmentEntity.getDosis(),
         treatmentEntity.getUnit(),
         treatmentEntity.getDescription(),
-        treatmentEntity.getMedicalAppointment().toDomain(),
+        medicalAppointment,
         treatmentGroup,
         null);
+
     var treatments = treatmentEntity.getTreatments().stream()
-        .map(t -> TreatmentEntity.toDomain(t, treatment)).collect(Collectors.toList());
+        .map(e -> TreatmentEntity.toDomain(e, treatment)).collect(Collectors.toList());
     treatment.setTreatments(treatments);
     return treatment;
   }

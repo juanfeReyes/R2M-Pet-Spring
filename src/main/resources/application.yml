@@ -1,14 +1,19 @@
 
 spring:
   datasource:
-    url: jdbc:mariadb://mariadb:3306/pets_db
+    url: jdbc:mariadb://mariadb:3306/pets_db?createDatabaseIfNotExist=true
     username: root
     password: password
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
-    generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:liquibase/master_changelog.json
+    enabled: true
+    drop-first: true
+    user: root
+    password: password
   security:
     oauth2:
       resourceserver:
